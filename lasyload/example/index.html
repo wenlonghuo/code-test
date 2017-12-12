@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>lasyload and LQIP</title>
+  <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+</head>
+
+<body>
+  <p>You may need to install go and Primitive</p>
+  <p>
+    This is long article.
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIwIDEwODAiPjxmaWx0ZXIgaWQ9ImIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEyIiAvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiM5NjkxN2QiIGQ9Ik0wIDBoMTkyMHYxMDgwSDB6Ii8+PGcgZmlsdGVyPSJ1cmwoI2IpIiB0cmFuc2Zvcm09Im1hdHJpeCg3LjUgMCAwIDcuNSAzLjggMy44KSIgZmlsbC1vcGFjaXR5PSIuNSI+PGVsbGlwc2UgZmlsbD0iI2ZmZSIgY3g9IjIyNyIgY3k9IjQ5IiByeD0iMTc5IiByeT0iMzIiLz48ZWxsaXBzZSBmaWxsPSIjMTgwYzJhIiBjeD0iMzUiIGN5PSIxMzIiIHJ4PSI5NSIgcnk9IjQ2Ii8+PGVsbGlwc2UgZmlsbD0iIzAwMDAxMyIgcng9IjEiIHJ5PSIxIiB0cmFuc2Zvcm09Im1hdHJpeCgzLjg3MTY3IDIyLjkzMTA1IC0xOTkuOTI5MzkgMzMuNzU2MDMgMCA4LjYpIi8+PGVsbGlwc2UgZmlsbD0iI2Y3ZmZjOSIgY3g9IjE5MyIgY3k9IjU0IiByeD0iNTUiIHJ5PSI0NiIvPjxlbGxpcHNlIGZpbGw9IiMwMDAwMjciIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJtYXRyaXgoLTIxLjQzMDE4IDE3LjYwNzUyIC00LjE1NDExIC01LjA1NTk5IDEyOCA4NykiLz48ZWxsaXBzZSBmaWxsPSIjMDAwMDM0IiByeD0iMSIgcnk9IjEiIHRyYW5zZm9ybT0ibWF0cml4KC02Ni44NDE5OCAxNy42NjM3MiAtNC45NTAzMiAtMTguNzMyNjkgMzguMiAwKSIvPjxlbGxpcHNlIGZpbGw9IiM3Yjc0NWIiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJtYXRyaXgoLTUuNjA4NzggMTkuNTYwMTQgLTIxMi44Mzc0OSAtNjEuMDMwMTcgMTA5IDExMCkiLz48ZWxsaXBzZSBmaWxsPSIjMjEwYzM4IiBjeD0iMjUiIGN5PSIxNDAiIHJ4PSIzMiIgcnk9IjMyIi8+PHBhdGggZmlsbD0iI2E2OTY2NSIgZD0iTTEwNC40LTE4LjFMMjc5LjEgMy4zbC0zLjUgMjguOC0xNzQuNy0yMS40eiIvPjxlbGxpcHNlIGZpbGw9IiNmY2ZmZWMiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJtYXRyaXgoLTY5LjUyMTE3IC00LjMzNzI4IDEuMDY2MjYgLTE3LjA5MDgxIDE4MC40IDQyLjYpIi8+PC9nPjwvc3ZnPg==" data-width="1920" data-height="1080" data-src="./images/1.jpg" class="big-pic" alt="">
+    <br/>
+    <br/>
+    <br/>
+    next line
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxmaWx0ZXIgaWQ9ImMiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjU1IiAvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiM4YTgwNzUiIGQ9Ik0wIDBoMTA4MHYxOTIwSDB6Ii8+PGcgZmlsdGVyPSd1cmwoI2MpJyBmaWxsLW9wYWNpdHk9Jy41Jz48ZWxsaXBzZSBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii41IiByeD0iMSIgcnk9IjEiIHRyYW5zZm9ybT0ibWF0cml4KC03OC4xNTk2NSAtMTk0Ljg3NzI4IDkwMy42MjQ4MSAtMzYyLjQxNzgyIDQwMi41IDEyNjIuMikiLz48ZWxsaXBzZSBmaWxsLW9wYWNpdHk9Ii41IiByeD0iMSIgcnk9IjEiIHRyYW5zZm9ybT0ibWF0cml4KC0xMDMwLjg5OTkgMjk1LjgwNjc1IC03OS4yMjQ5NiAtMjc2LjEwMjU4IDU0Ny4yIDcwOC41KSIvPjxlbGxpcHNlIGZpbGw9IiNmZmZmZTIiIGZpbGwtb3BhY2l0eT0iLjUiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJtYXRyaXgoNTA1LjkxNzQ1IC0yMTcuODgyNDcgNTIuODI4NTEgMTIyLjY2NjQzIDYwMSAxNzg5LjcpIi8+PGVsbGlwc2UgZmlsbC1vcGFjaXR5PSIuNSIgcng9IjEiIHJ5PSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg2My4zIC05NDcgMTc2Mykgc2NhbGUoOTYuNTQwNTcgNTAyLjI2NzUyKSIvPjxlbGxpcHNlIGZpbGw9IiNlY2ZmZmYiIGZpbGwtb3BhY2l0eT0iLjUiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoMTU2LjggMTEzIDY1NS42KSBzY2FsZSgxMDAwLjc4Mzg3IDE3MC4zMTk3MykiLz48ZWxsaXBzZSBmaWxsPSIjNWEyZDE4IiBmaWxsLW9wYWNpdHk9Ii41IiByeD0iMSIgcnk9IjEiIHRyYW5zZm9ybT0ibWF0cml4KDU5LjA5NzA2IC0xMzMuMzYwMDkgNzU4LjQwNDEyIDMzNi4wNzg0NSA3NjguNSAzLjcpIi8+PGVsbGlwc2UgZmlsbD0iIzAyMDAwMCIgZmlsbC1vcGFjaXR5PSIuNSIgcng9IjEiIHJ5PSIxIiB0cmFuc2Zvcm09InJvdGF0ZSg3Mi45IC03MyA5NDYpIHNjYWxlKDExNS4yMjE1NSA4OTYuMjE1ODMpIi8+PHBhdGggZmlsbD0iIzkyNDQwMCIgZmlsbC1vcGFjaXR5PSIuNSIgZD0iTS03MS4zIDE2OTguOGw5MzcuNS0zODIuNS05NDUgNzIweiIvPjxlbGxpcHNlIGZpbGw9IiNiZWJmYzIiIGZpbGwtb3BhY2l0eT0iLjUiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE3OS4xIDYyLjkgOTguMikgc2NhbGUoMzc1Ljg0OTEyIDExMS45NDQ2MSkiLz48ZWxsaXBzZSBmaWxsPSIjYmY4NjQyIiBmaWxsLW9wYWNpdHk9Ii41IiByeD0iMSIgcnk9IjEiIHRyYW5zZm9ybT0icm90YXRlKC0xMjYuNyA4MDkuNSA0OTEuNCkgc2NhbGUoMTg1LjU5NzQ1IDMwMC40OTIyMSkiLz48L2c+PC9zdmc+" data-width="1080" data-height="1920" data-src="./images/2.jpg" class="big-pic" alt="">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    3th picture
+    <br/>
+    <br/>
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDgwIDE5MjAiPjxmaWx0ZXIgaWQ9ImIiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEyIiAvPjwvZmlsdGVyPjxwYXRoIGZpbGw9IiM2MTU1NDkiIGQ9Ik0wIDBoMTA4MHYxOTIwSDB6Ii8+PGcgZmlsdGVyPSJ1cmwoI2IpIiB0cmFuc2Zvcm09Im1hdHJpeCg3LjUgMCAwIDcuNSAzLjggMy44KSIgZmlsbC1vcGFjaXR5PSIuNSI+PGVsbGlwc2UgZmlsbD0iIzVkYTFmNyIgcng9IjEiIHJ5PSIxIiB0cmFuc2Zvcm09Im1hdHJpeCgtMy4yNjUxNyAtNDUuNTUxNDYgMTQwLjk5MTM1IC0xMC4xMDYzOSA3MC4zIDQ1KSIvPjxlbGxpcHNlIGZpbGw9IiM1OTIxMDAiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJyb3RhdGUoLTY4LjQgMTg0LjggMjEuNCkgc2NhbGUoMTAwLjgzMzY1IDg3LjQyMDc1KSIvPjxlbGxpcHNlIGZpbGw9IiNiZmMyYmIiIGN4PSIyMCIgY3k9IjgwIiByeD0iMTQzIiByeT0iMTUiLz48ZWxsaXBzZSBmaWxsPSIjOWY1YzBmIiByeD0iMSIgcnk9IjEiIHRyYW5zZm9ybT0icm90YXRlKC0xNzQuNiA0LjUgOTYpIHNjYWxlKDczLjY4NjA0IDcyLjQ0MzY2KSIvPjxlbGxpcHNlIGZpbGw9IiMwZjQ4OTMiIHJ4PSIxIiByeT0iMSIgdHJhbnNmb3JtPSJtYXRyaXgoMS4wOTE0OCAyMy4zMjMxIC01MS4wODYyNCAyLjM5MDc1IDExOC44IDM5LjcpIi8+PGVsbGlwc2UgZmlsbD0iIzMxMWYwMCIgcng9IjEiIHJ5PSIxIiB0cmFuc2Zvcm09Im1hdHJpeCgzNi4yMjYyNyAtMTMwLjkwNDIzIDI3LjY0MTEyIDcuNjQ5MzcgOTYgMjM5LjkpIi8+PHBhdGggZmlsbD0iI2Y0YjU2NCIgZD0iTS01LjIgMTI1LjhsMjMuNiA0LjYtMTMuMiA2Ny44LTIzLjYtNC42eiIvPjxlbGxpcHNlIGZpbGw9IiMyNTI4MDAiIGN4PSI0MyIgY3k9IjEwNSIgcng9IjI0IiByeT0iMTYiLz48ZWxsaXBzZSBmaWxsPSIjYTJjMWRkIiBjeT0iNzciIHJ4PSIyOCIgcnk9IjI4Ii8+PGVsbGlwc2UgZmlsbD0iIzJiNDk3YiIgcng9IjEiIHJ5PSIxIiB0cmFuc2Zvcm09Im1hdHJpeCgzNC40MTI0MyAtNi4yMzYyNiA0LjkwOTg3IDI3LjA5MzI4IDMzLjYgNC40KSIvPjwvZz48L3N2Zz4=" data-width="1080" data-height="1920" data-src="./images/3.jpg" class="big-pic" alt="">
+
+  </p>
+  <script type='text/javascript' src='./bundle.js'></script>
+</body>
+
+</html>

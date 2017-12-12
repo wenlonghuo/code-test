@@ -1,0 +1,21 @@
+{
+  "name": "lasyload",
+  "version": "1.0.0",
+  "description": "lasyload LQIP",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run sqip & browserify example/index.js -o example/bundle.js",
+    "sqip": "node sqip.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lasyload"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^14.5.0",
+    "glob": "^7.1.2",
+    "sqip": "^0.2.2"
+  }
+}
