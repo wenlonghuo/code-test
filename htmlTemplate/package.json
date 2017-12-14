@@ -1,0 +1,14 @@
+{
+  "name": "stringtemplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^4.0.1"
+  }
+}
