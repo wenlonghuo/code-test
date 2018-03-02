@@ -1,0 +1,34 @@
+{
+  "name": "code-test",
+  "version": "1.0.0",
+  "description": "thrift",
+  "main": "index.js",
+  "scripts": {
+    "start": "vue serve & node server.js",
+    "dev": "vue serve & npm run compile && nodemon server.js",
+    "compile": "npm run gen && npm run concat",
+    "gen": "thrift -r --gen js:node todo.thrift && thrift -r --gen js todo.thrift",
+    "concat": "concat -o thrift-bundle.js ./thrift.js ./gen-js/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenlonghuo/code-test.git"
+  },
+  "keywords": [
+    "thrift"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wenlonghuo/code-test/issues"
+  },
+  "homepage": "https://github.com/wenlonghuo/code-test#readme",
+  "dependencies": {
+    "thrift": "^0.11.0"
+  },
+  "devDependencies": {
+    "concat": "^1.0.3",
+    "nodemon": "^1.17.1"
+  }
+}
