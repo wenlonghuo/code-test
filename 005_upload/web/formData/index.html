@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ajax upload</title>
+  <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+</head>
+
+<body>
+  <input name="file" type="file" multiple webkitdirectory="" id="input"/>
+  <button onclick="btnUpload" id="submit">提交</button>
+
+  <h2>使用 createObjectURL</h2>
+  <ul id="picList"></ul>
+
+  <h2>使用 FileReader</h2>
+  <ul id="dataPicList"></ul>
+</body>
+<script src="/formData/ajax.js"></script>
+<script src="/formData/spark-md5.js"></script>
+<script>
+  const input = document.querySelector('#input')
+  const btn = document.querySelector('#submit')
+  const picList = document.querySelector('#picList')
+  const dataPicList = document.querySelector('#dataPicList')
+  let fileArr = []
+  let uid = 0
+
+  // 点击上传文件
+  function btnChange (e) {
+    const files = [].slice.call(e.target.files || [])
+    fileArr = []
+    files.forEach(file => {
+      fileArr.push({
+        uid: ++uid,
+        name: file.name,
+        size: file.size / 1024 + 'k',
+        file
+      })
+    })
+    setImage()
+  }
+  // 上传函数
+  function btnUpload (e) {
+    upload({
+      files: fileArr,
+      action: '/api/upload',
+      onProgress (e) {
+        console.log(e)
+      },
+      onError (e) {
+        console.log(e)
+      },
+      onSuccess (e) {
+        console.log('上传成功', e)
+      },
+    })
+  }
+
+  function setImage () {
+    const types = ['image/png', 'image/jpeg', 'image/jpg']
+    const images = fileArr.filter(file => ~types.indexOf(file.file.type))
+    let str = ''
+    let dataStr = ''
+    images.forEach((file) => {
+      const url = getLocalUrl(file.file)
+      str += `<li>大小：${file.size}<br>文件名：${file.name}<br> <img src="${url}" /></li>`
+      dataStr += `<li>大小：${file.size}<br>
+        文件名：${file.name}<br>
+        hash: <span id="id-text-${file.uid}"></span>
+        <br> <img id="id-${file.uid}" /></li>`
+    })
+    picList.innerHTML = str
+    dataPicList.innerHTML = dataStr
+    images.forEach((file) => {
+      getReadData(file.uid, file.file)
+    })
+  }
+
+  function getLocalUrl (file) {
+    return URL.createObjectURL(file)
+  }
+  function getReadData (uid, file) {
+    const reader = new FileReader()
+    reader.onload = function (e) {
+      dataPicList.querySelector('#id-' + uid).src = e.target.result
+      const spark = new SparkMD5()
+      spark.append(e.target.result)
+      const hexHash = spark.end()
+      dataPicList.querySelector('#id-text-' + uid).innerHTML = hexHash
+    }
+    reader.readAsDataURL(file)
+  }
+
+  input.addEventListener('change', btnChange)
+  btn.addEventListener('click', btnUpload)
+</script>
+</html>
