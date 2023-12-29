@@ -1,4 +1,3 @@
-import { client } from "./client";
 
 interface Options {
   maxAge?: number;
