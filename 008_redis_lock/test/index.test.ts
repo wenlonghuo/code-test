@@ -5,7 +5,7 @@ test("lock parallel", async () => {
   const testClient = new RedisLock(client, "test1", {
     maxAge: 3000,
     lockTimeout: 4000,
-    retryPeroid: 100,
+    retryPeriod: 100,
   });
   const lock1 = testClient.lock();
   const lock2 = testClient.lock();
@@ -16,14 +16,14 @@ test("lock after expire", async () => {
   const testClient1 = new RedisLock(client, "test2", {
     maxAge: 1000,
     lockTimeout: 4000,
-    retryPeroid: 100,
+    retryPeriod: 100,
   });
   expect(await testClient1.lock()).toEqual({ result: true });
   await delay(1000);
   const testClient2 = new RedisLock(client, "test2", {
     maxAge: 1000,
     lockTimeout: 4000,
-    retryPeroid: 100,
+    retryPeriod: 100,
   });
   expect(await testClient2.lock()).toEqual({ result: true });
 });
@@ -33,14 +33,14 @@ test("lock after delete", async () => {
   const testClient1 = new RedisLock(client, key, {
     maxAge: 1000,
     lockTimeout: 4000,
-    retryPeroid: 100,
+    retryPeriod: 100,
   });
   expect(await testClient1.lock()).toEqual({ result: true });
   await testClient1.unlock();
   const testClient2 = new RedisLock(client, key, {
     maxAge: 1000,
     lockTimeout: 4000,
-    retryPeroid: 100,
+    retryPeriod: 100,
   });
   expect(await testClient2.lock()).toEqual({ result: true });
 });
@@ -56,7 +56,7 @@ test("lock with retry", async () => {
   const testClient2 = new RedisLock(client, key, {
     maxAge: 1000,
     lockTimeout: 4000,
-    retryPeroid: 200,
+    retryPeriod: 200,
     retry: true,
   });
   const lock2 = testClient2.lock();
@@ -75,7 +75,7 @@ test("lock with retry timeout", async () => {
   const testClient2 = new RedisLock(client, key, {
     maxAge: 1000,
     lockTimeout: 1000,
-    retryPeroid: 200,
+    retryPeriod: 200,
     retry: true,
   });
   const lock2 = testClient2.lock();

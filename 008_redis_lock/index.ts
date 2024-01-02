@@ -4,7 +4,7 @@ interface Options {
   maxAge?: number;
   lockTimeout?: number;
   retry?: boolean;
-  retryPeroid?: number;
+  retryPeriod?: number;
 }
 
 export function createTimeout<T>(
@@ -31,7 +31,7 @@ export class RedisLock {
     this.redis = redis;
     this.redisKey = `b_${key}`;
     this.options = Object.assign(
-      { maxAge: 10000, lockTimeout: 5000, retry: false, retryPeroid: 500 },
+      { maxAge: 10000, lockTimeout: 5000, retry: false, retryPeriod: 500 },
       options
     );
   }
@@ -66,7 +66,7 @@ export class RedisLock {
   };
 
   lock = async () => {
-    const { retry, retryPeroid, lockTimeout } = this.options;
+    const { retry, retryPeriod, lockTimeout } = this.options;
     if (!retry) {
       return this._lock();
     }
@@ -84,7 +84,7 @@ export class RedisLock {
           code: "TIMEOUT",
         };
       }
-      await delay(retryPeroid);
+      await delay(retryPeriod);
     }
   };
 
