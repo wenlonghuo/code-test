@@ -1,3 +1,4 @@
+import { RedisClientType } from 'redis';
 
 interface Options {
   maxAge?: number;
@@ -18,7 +19,7 @@ export const delay = (millSecond: number) =>
   new Promise((resolve) => setTimeout(resolve, millSecond));
 
 export class RedisLock {
-  redis: typeof client;
+  redis: RedisClientType;
   redisKey: string;
   options: Required<Options>;
   lastRequestTime?: number;
@@ -83,6 +84,15 @@ export class RedisLock {
       await delay(retryPeroid);
     }
   };
+
+  lockTransaction = async <T>(callback: () => Promise<T>): Promise<T> => {
+    await this.lock();
+    try {
+      return await callback();
+    } finally {
+      await this.unlock();
+    }
+  }
 
   unlock = () => {
     return this.redis.del(this.redisKey);
