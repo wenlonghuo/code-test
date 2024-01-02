@@ -1,4 +1,4 @@
-import { RedisClientType } from 'redis';
+import { RedisClientType } from "redis";
 
 interface Options {
   maxAge?: number;
@@ -7,7 +7,10 @@ interface Options {
   retryPeroid?: number;
 }
 
-export function createTimeout<T>(promise: T, millSecond: number): Promise<Awaited<T>> {
+export function createTimeout<T>(
+  promise: T,
+  millSecond: number
+): Promise<Awaited<T>> {
   return Promise.race([
     promise,
     new Promise((resolve, reject) =>
@@ -86,13 +89,16 @@ export class RedisLock {
   };
 
   lockTransaction = async <T>(callback: () => Promise<T>): Promise<T> => {
-    await this.lock();
+    const res = await this.lock();
+    if (!res.result) {
+      throw new Error("Lock Failed");
+    }
     try {
       return await callback();
     } finally {
       await this.unlock();
     }
-  }
+  };
 
   unlock = () => {
     return this.redis.del(this.redisKey);
