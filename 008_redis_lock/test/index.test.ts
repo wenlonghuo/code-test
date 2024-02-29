@@ -45,6 +45,33 @@ test("lock after delete", async () => {
   expect(await testClient2.lock()).toEqual({ result: true });
 });
 
+test("lock after expire delete, existing lock right", async () => {
+  const key = "test15";
+  const testClient1 = new RedisLock(client, key, {
+    maxAge: 1010,
+    lockTimeout: 4000,
+    retryPeriod: 100,
+  });
+  expect(await testClient1.lock()).toEqual({ result: true });
+  await delay(1200);
+  const testClient2 = new RedisLock(client, key, {
+    maxAge: 1000,
+    lockTimeout: 4000,
+    retryPeriod: 100,
+  });
+  const testClient3 = new RedisLock(client, key, {
+    maxAge: 1000,
+    lockTimeout: 4000,
+    retryPeriod: 100,
+  });
+  expect(await testClient2.lock()).toEqual({ result: true });
+  await testClient1.unlock();
+
+  expect(await testClient3.lock()).toEqual({ result: false, code: 'LOCKED' });
+  await testClient2.unlock()
+  await testClient3.unlock()
+});
+
 test("lock with retry", async () => {
   const key = "test4";
   const testClient1 = new RedisLock(client, key, {

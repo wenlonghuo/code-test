@@ -26,6 +26,7 @@ export class RedisLock {
   redisKey: string;
   options: Required<Options>;
   lastRequestTime?: number;
+  lockVal: string;
 
   constructor(redis, key: string, options: Options = {}) {
     this.redis = redis;
@@ -34,13 +35,14 @@ export class RedisLock {
       { maxAge: 10000, lockTimeout: 5000, retry: false, retryPeriod: 500 },
       options
     );
+    this.lockVal = Math.random().toString().slice(-10)
   }
 
   _lock = async () => {
     try {
       const { maxAge } = this.options;
       const lockRes = await createTimeout(
-        this.redis.set(this.redisKey, 1, {
+        this.redis.set(this.redisKey, this.lockVal, {
           PX: maxAge,
           NX: true,
         }),
@@ -100,7 +102,30 @@ export class RedisLock {
     }
   };
 
-  unlock = () => {
-    return this.redis.del(this.redisKey);
+  // unlock should check locking value is current value. if not, do not delete.
+  unlock = async () => {
+    try {
+      const { lockTimeout, maxAge } = this.options;
+      const res = await createTimeout(
+        this.redis.expire(this.redisKey, Math.round(maxAge / 1000)),
+        lockTimeout
+      );
+
+      if (!res) {
+        return true;
+      }
+      const val = await createTimeout(
+        this.redis.get(this.redisKey),
+        lockTimeout
+      );
+
+      if (val !== this.lockVal) {
+        return true;
+      }
+      return this.redis.del(this.redisKey)
+    } catch(e) {
+      console.error(e)
+      return false;
+    }
   };
 }

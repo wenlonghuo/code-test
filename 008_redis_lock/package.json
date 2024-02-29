@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node index",
-    "test": "jest --watch"
+    "test": "jest --watch --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
