@@ -25,7 +25,7 @@ export class RedisLock {
   redis: RedisClientType;
   redisKey: string;
   options: Required<Options>;
-  lastRequestTime?: number;
+  lastRequestTime: number;
   lockVal: string;
 
   constructor(redis, key: string, options: Options = {}) {
@@ -36,6 +36,7 @@ export class RedisLock {
       options
     );
     this.lockVal = Math.random().toString().slice(-10)
+    this.lastRequestTime = Date.now();
   }
 
   _lock = async () => {
